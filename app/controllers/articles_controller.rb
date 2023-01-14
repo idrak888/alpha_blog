@@ -13,11 +13,12 @@ class ArticlesController < ApplicationController
     end
     def create
         @article = Article.new(params.require(:article).permit(:title, :description))
+        @article.user = User.first
         if @article.save
             flash[:notice] = "Article was created successfully."
             redirect_to @article 
         else
-            render 'new'
+            render 'new', status: :unprocessable_entity
         end
     end
     def update

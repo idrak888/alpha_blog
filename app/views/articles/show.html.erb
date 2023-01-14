@@ -7,11 +7,16 @@
     <title><%= @article.title %></title>
 </head>
 <body>
-    <h3><%= @article.title %></h3>
-    <p><%= @article.description %></p>
-    <hr>
-    <p>Created on: <%= @article.created_at %></p>
-    <br>
-    <a href="/articles"><button>Go to Articles list</button></a>
+    <div class="container">
+        <div class="inner">
+            <h3><%= @article.title %></h3>
+            <p><%= @article.description %></p>
+            <hr>
+            <p>Created on: <%= @article.created_at %></p>
+            by <%= @article.user.username if @article.user %>
+            <br>
+            <a href="/articles"><button>Go to Articles list</button></a>
+        </div>
+    </div>
 </body>
 </html>

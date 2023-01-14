@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <title>Articles</title>
 </head>
 <body>
+    <a href="/"><button>Home</button></a>
+    <a href="/about"><button>About</button></a> | 
     <a href="/articles/new"><button>Add new</button></a>
     <tbody>
     <% @articles.reverse.each do |article| %>
+        <div class="article">
             <tr>
                 <td><h3><%=article.title%></h3></td>
                 <td><p><%=article.description%></p></td>
                 <td><%=article.created_at%></td>
                 <br>
-                <p>
-                <%= link_to "View article", article_path(article) %> |
-                <%= link_to "Edit article", edit_article_path(article) %>
+                <p class="info">
+                    <%= link_to "View article", article_path(article) %> |
+                    <%= link_to "Edit article", edit_article_path(article) %> |
+                    <%= link_to "Delete", article_path(article), data: { "turbo_confirm": 'Are you sure?', "turbo-method": :delete } %> |
+                    by <%= article.user.username if article.user %>
                 </p>
-                <%= link_to "Delete", article_path(article), data: { "turbo_confirm": 'Are you sure?', "turbo-method": :delete } %>
             </tr>
-        <hr>
+        </div>
     <% end %>
     </tbody>
 </body>
