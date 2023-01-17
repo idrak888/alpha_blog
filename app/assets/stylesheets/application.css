@@ -45,6 +45,9 @@ button, .button {
     cursor: pointer;
     margin: 5px;
 }
+.green {
+    background-color: rgb(26, 185, 77);
+}
 input, textarea {
     font-size: 24px;
     border: 0;
@@ -61,4 +64,11 @@ input, textarea {
     background-color: rgba(151, 151, 255, 0.516);
     font-weight: bold;
     padding: 10px;
+}
+.flash-message {
+    background-color: black;
+    width: 100vw;
+    font-weight: bold;
+    padding: 10px;
+    color: white;
 }
